@@ -14,15 +14,15 @@ public class CardReaderController {
 
 	private void createDummyData() {
 		egkData = new EgkData();
-		egkData.setId("12345");
+		egkData.setId("Bb4LtVF8");
 		egkData.setNachname("Stein");
 		egkData.setVorname("Emanuel");
 		egkData.setStrasse("Burgenweg");
-		egkData.setHausnummer("15");
+		egkData.setHausnummer("15c");
 		egkData.setPostleitzahl("88291");
 		egkData.setOrt("Bergdorfen");
 		egkData.setVersichtertennummer("773826145");
-		egkData.setVersichertenverhaeltnis(1);
+		egkData.setVersicherungsverhaeltnis(1);
 	}
 
 }

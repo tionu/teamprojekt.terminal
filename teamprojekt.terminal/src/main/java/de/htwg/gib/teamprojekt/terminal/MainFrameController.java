@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.zxing.WriterException;
 import com.journaldev.qrcode.generator.GenerateQRCode;
 
@@ -51,15 +53,21 @@ public class MainFrameController {
 
 				EgkData egkData = cardReaderController.getEgkData();
 
-				mainFrame.getLblEgkData().setText("<html>" + egkData.getNachname() + ", " + egkData.getVorname()
-						+ "<br>Vers.-Nr.: " + egkData.getVersichtertennummer() + "</html>");
-
-				String ressourceId = egkData.getId();
+				ObjectMapper mapper = new ObjectMapper();
 
 				try {
+					System.out.println(mapper.writeValueAsString(egkData));
+
+					mainFrame.getLblEgkData().setText("<html>" + egkData.getNachname() + ", " + egkData.getVorname()
+							+ "<br>Vers.-Nr.: " + egkData.getVersichtertennummer() + "</html>");
+
+					String ressourceId = egkData.getId();
+
 					qrCode = new ImageIcon(GenerateQRCode.createQRImage(ressourceId));
 				} catch (WriterException e1) {
 					e1.printStackTrace();
+				} catch (JsonProcessingException e2) {
+					e2.printStackTrace();
 				}
 				mainFrame.getLblQrCode().setIcon(qrCode);
 
