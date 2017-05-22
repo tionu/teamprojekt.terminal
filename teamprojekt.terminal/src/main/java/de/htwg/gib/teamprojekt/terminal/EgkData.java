@@ -1,19 +1,24 @@
 package de.htwg.gib.teamprojekt.terminal;
 
+import java.util.Date;
+
 public class EgkData {
 
 	private String id;
 
-	private String Nachname;
-	private String Vorname;
+	private String nachname;
+	private String vorname;
+	
+	private Date geburtsdatum;
 
 	private String strasse;
 	private String hausnummer;
 	private String postleitzahl;
 	private String ort;
 
+	
 	private String versichertennummer;
-	private String versicherungsverhaeltnis;
+	private String versichertenstatus;
 
 	public String getId() {
 		return id;
@@ -24,19 +29,27 @@ public class EgkData {
 	}
 
 	public String getNachname() {
-		return Nachname;
+		return nachname;
 	}
 
 	public void setNachname(String nachname) {
-		Nachname = nachname;
+		this.nachname = nachname;
 	}
 
 	public String getVorname() {
-		return Vorname;
+		return vorname;
 	}
 
 	public void setVorname(String vorname) {
-		Vorname = vorname;
+		this.vorname = vorname;
+	}
+
+	public Date getGeburtsdatum() {
+		return geburtsdatum;
+	}
+
+	public void setGeburtsdatum(Date geburtsdatum) {
+		this.geburtsdatum = geburtsdatum;
 	}
 
 	public String getStrasse() {
@@ -79,12 +92,12 @@ public class EgkData {
 		this.versichertennummer = versichtertennummer;
 	}
 
-	public String getVersicherungsverhaeltnis() {
-		return versicherungsverhaeltnis;
+	public String getVersichertenstatus() {
+		return versichertenstatus;
 	}
 
-	public void setVersicherungsverhaeltnis(String versichertenverhaeltnis) {
-		this.versicherungsverhaeltnis = versichertenverhaeltnis;
+	public void setVersichertenstatus(String versichertenverhaeltnis) {
+		this.versichertenstatus = versichertenverhaeltnis;
 	}
 
 }

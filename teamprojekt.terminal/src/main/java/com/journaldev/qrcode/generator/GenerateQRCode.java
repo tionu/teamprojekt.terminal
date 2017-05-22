@@ -27,7 +27,7 @@ public class GenerateQRCode {
 		hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
 		QRCodeWriter qrCodeWriter = new QRCodeWriter();
 		BitMatrix byteMatrix = qrCodeWriter.encode(qrCodeText, BarcodeFormat.QR_CODE, size, size, hintMap);
-		// Make the BufferedImage that are to hold the QRCode
+		// Make the BufferedImage to hold the QRCode
 		int matrixWidth = byteMatrix.getWidth();
 		BufferedImage image = new BufferedImage(matrixWidth, matrixWidth, BufferedImage.TYPE_INT_RGB);
 		image.createGraphics();

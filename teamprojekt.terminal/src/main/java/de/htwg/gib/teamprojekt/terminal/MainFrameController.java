@@ -3,6 +3,8 @@ package de.htwg.gib.teamprojekt.terminal;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.swing.ImageIcon;
 
@@ -54,6 +56,9 @@ public class MainFrameController {
 				EgkData egkData = cardReaderController.getEgkData();
 
 				ObjectMapper mapper = new ObjectMapper();
+				
+				DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+				mapper.setDateFormat(df);
 
 				try {
 					System.out.println(mapper.writeValueAsString(egkData));
