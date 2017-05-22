@@ -12,8 +12,8 @@ public class EgkData {
 	private String postleitzahl;
 	private String ort;
 
-	private String versichtertennummer;
-	private int versicherungsverhaeltnis;
+	private String versichertennummer;
+	private String versicherungsverhaeltnis;
 
 	public String getId() {
 		return id;
@@ -71,19 +71,19 @@ public class EgkData {
 		this.ort = ort;
 	}
 
-	public String getVersichtertennummer() {
-		return versichtertennummer;
+	public String getVersichertennummer() {
+		return versichertennummer;
 	}
 
-	public void setVersichtertennummer(String versichtertennummer) {
-		this.versichtertennummer = versichtertennummer;
+	public void setVersichertennummer(String versichtertennummer) {
+		this.versichertennummer = versichtertennummer;
 	}
 
-	public int getVersicherungsverhaeltnis() {
+	public String getVersicherungsverhaeltnis() {
 		return versicherungsverhaeltnis;
 	}
 
-	public void setVersicherungsverhaeltnis(int versichertenverhaeltnis) {
+	public void setVersicherungsverhaeltnis(String versichertenverhaeltnis) {
 		this.versicherungsverhaeltnis = versichertenverhaeltnis;
 	}
 

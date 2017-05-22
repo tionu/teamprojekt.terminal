@@ -59,7 +59,7 @@ public class MainFrameController {
 					System.out.println(mapper.writeValueAsString(egkData));
 
 					mainFrame.getLblEgkData().setText("<html>" + egkData.getNachname() + ", " + egkData.getVorname()
-							+ "<br>Vers.-Nr.: " + egkData.getVersichtertennummer() + "</html>");
+							+ "<br>Vers.-Nr.: " + egkData.getVersichertennummer() + "</html>");
 
 					String ressourceId = egkData.getId();
 

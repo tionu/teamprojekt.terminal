@@ -21,8 +21,8 @@ public class CardReaderController {
 		egkData.setHausnummer("15c");
 		egkData.setPostleitzahl("88291");
 		egkData.setOrt("Bergdorfen");
-		egkData.setVersichtertennummer("773826145");
-		egkData.setVersicherungsverhaeltnis(1);
+		egkData.setVersichertennummer("773826145");
+		egkData.setVersicherungsverhaeltnis("1");
 	}
 
 }
