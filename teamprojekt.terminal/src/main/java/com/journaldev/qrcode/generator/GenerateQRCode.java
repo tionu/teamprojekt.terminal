@@ -4,11 +4,7 @@ package com.journaldev.qrcode.generator;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Hashtable;
-
-import javax.imageio.ImageIO;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -19,25 +15,13 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 public class GenerateQRCode {
 
-	/**
-	 * @param args
-	 * @throws WriterException
-	 * @throws IOException
-	 */
-	public static void main(String[] args) throws WriterException, IOException {
-		// der übergebene ASCI-Code:
-		String qrCodeText = "www.google.de";
-		// Speicherplatz für QR-Code:
-		String filePath = "./qr.png";
-		int size = 125;
-		String fileType = "png";
-		File qrFile = new File(filePath);
-		createQRImage(qrFile, qrCodeText, size, fileType);
-		System.out.println("OR-Code wurde erstellt");
+	private static final int DEFAULT_QR_CODE_SIZE = 125;
+
+	public static BufferedImage createQRImage(String qrCodeText) throws WriterException {
+		return createQRImage(qrCodeText, DEFAULT_QR_CODE_SIZE);
 	}
 
-	private static void createQRImage(File qrFile, String qrCodeText, int size, String fileType)
-			throws WriterException, IOException {
+	public static BufferedImage createQRImage(String qrCodeText, int size) throws WriterException {
 		// Create the ByteMatrix for the QR-Code that encodes the given String
 		Hashtable<EncodeHintType, ErrorCorrectionLevel> hintMap = new Hashtable<EncodeHintType, ErrorCorrectionLevel>();
 		hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
@@ -61,7 +45,7 @@ public class GenerateQRCode {
 				}
 			}
 		}
-		ImageIO.write(image, fileType, qrFile);
+		return image;
 	}
 
 }
