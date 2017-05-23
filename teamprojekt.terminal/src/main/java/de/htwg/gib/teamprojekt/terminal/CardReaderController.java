@@ -18,8 +18,8 @@ public class CardReaderController {
 	private void createDummyData() {
 		egkData = new EgkData();
 		egkData.setId("Bb4LtVF8");
-		egkData.setNachname("Stein");
-		egkData.setVorname("Emanuel");
+		egkData.setNachname("Gräfin");
+		egkData.setVorname("Stephanie Tatjana");
 		try {
 			egkData.setGeburtsdatum(new SimpleDateFormat("dd.MM.yyyy").parse("16.09.1993"));
 		} catch (ParseException e) {
@@ -29,7 +29,7 @@ public class CardReaderController {
 		egkData.setHausnummer("15c");
 		egkData.setPostleitzahl("88291");
 		egkData.setOrt("Bergdorfen");
-		egkData.setVersichertennummer("773826145");
+		egkData.setVersichertennummer("X110345360");
 		egkData.setVersichertenstatus("3");
 	}
 
