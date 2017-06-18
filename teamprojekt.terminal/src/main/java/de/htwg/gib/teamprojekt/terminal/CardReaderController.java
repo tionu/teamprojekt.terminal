@@ -1,36 +1,20 @@
 package de.htwg.gib.teamprojekt.terminal;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import de.gecko.egkfeuer.model.EgkPatient;
+import de.gecko.egkfeuer.model.ekg.DelegatingToPatientConverter;
+import de.gecko.egkfeuer.model.ekg.v51.ToPatientConverterV51;
+import de.gecko.egkfeuer.model.ekg.v52.ToPatientConverterV52;
+import de.gecko.egkfeuer.service.CardReaderService;
+import de.gecko.egkfeuer.service.CardReaderServiceImpl;
+import de.gecko.egkfeuer.service.CardTerminalsServiceImpl;
 
 public class CardReaderController {
 
-	EgkData egkData;
-
-	public CardReaderController() {
-		createDummyData();
-	}
-
-	public EgkData getEgkData() {
-		return egkData;
-	}
-
-	private void createDummyData() {
-		egkData = new EgkData();
-		egkData.setId("Bb4LtVF8");
-		egkData.setNachname("Gräfin");
-		egkData.setVorname("Stephanie Tatjana");
-		try {
-			egkData.setGeburtsdatum(new SimpleDateFormat("dd.MM.yyyy").parse("16.09.1993"));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		egkData.setStrasse("Burgenweg");
-		egkData.setHausnummer("15c");
-		egkData.setPostleitzahl("88291");
-		egkData.setOrt("Bergdorfen");
-		egkData.setVersichertennummer("X110345360");
-		egkData.setVersichertenstatus("3");
+	public EgkPatient getEgkPatient() {
+		CardReaderService cardReaderService = new CardReaderServiceImpl(
+				new DelegatingToPatientConverter(new ToPatientConverterV51(), new ToPatientConverterV52()),
+				new CardTerminalsServiceImpl());
+		return cardReaderService.read();
 	}
 
 }
