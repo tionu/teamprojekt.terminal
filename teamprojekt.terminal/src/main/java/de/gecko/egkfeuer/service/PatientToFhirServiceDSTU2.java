@@ -62,7 +62,7 @@ public class PatientToFhirServiceDSTU2 {
             throw new RuntimeException("Gender of patient was not set");
 
         //setBirthday
-        fhirPatient.setBirthDateWithDayPrecision(Date.from(patient.getBirthday().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        fhirPatient.setBirthDateWithDayPrecision(patient.getBirthday());
 
         //setAdress
         //TODO: AdressType postal, other Countries than Germany

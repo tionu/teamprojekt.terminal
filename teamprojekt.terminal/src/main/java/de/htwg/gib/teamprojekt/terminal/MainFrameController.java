@@ -67,12 +67,14 @@ public class MainFrameController {
 				DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 				mapper.setDateFormat(df);
 
+				String ressourceId = "na";
+
 				try {
-					System.out.println(mapper.writeValueAsString(egkData));
+					System.out.println("transmit egk data to relay server: " + mapper.writeValueAsString(egkData));
 
 					mainFrame.getLblEgkData().setText("<html>" + egkData.getSurname() + ", " + egkData.getGivenName()
 							+ "<br>Vers.-Nr.: " + egkData.getHealthInsuranceNumber() + "</html>");
-					
+
 					try {
 						URL url = new URL("http://jira.studipark.de:8080/teamprojekt.relay/api/terminal");
 						URLConnection connection = url.openConnection();
@@ -83,20 +85,18 @@ public class MainFrameController {
 						OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream());
 						out.write(mapper.writeValueAsString(egkData));
 						out.close();
-						
+
 						BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-						
-						while (in.ready()){
-							System.out.println(in.readLine());
+
+						while (in.ready()) {
+							ressourceId = in.readLine();
 						}
-							
 						in.close();
-						
-					} catch (Exception e3){
+						System.out.println("received ressource id: " + ressourceId);
+
+					} catch (Exception e3) {
 						e3.printStackTrace();
 					}
-
-					String ressourceId = "not yet know";
 
 					qrCode = new ImageIcon(GenerateQRCode.createQRImage(ressourceId));
 				} catch (WriterException e1) {
